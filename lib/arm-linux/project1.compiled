@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1374724630"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -vewnhi -Fi/home/lukestorry/Downloads/TimesTablesTester/lib/arm-linux -Fu/home/lukestorry/Downloads/TimesTablesTester/ -FU/home/lukestorry/Downloads/TimesTablesTester/lib/arm-linux/ -l project1.lpr"/>
+</CONFIG>
