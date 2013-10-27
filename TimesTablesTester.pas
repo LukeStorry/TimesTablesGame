@@ -1,6 +1,6 @@
 //Written By Luke Storry
 
-program project1;
+program TimesTablesTester;
 Uses SysUtils, Crt;
 var
   score , i , correctAnswer , max , myAnswer : Integer;
