@@ -5,6 +5,7 @@ Uses SysUtils, Crt;
 var
   score , i , correctAnswer , max , myAnswer : Integer;
                          startTime , endTime : Comp; //larger that Int
+
  function GenerateQuestion(max:integer) : String;      //var correctAnswer:integer
          var a , b : Integer;
    begin
@@ -36,8 +37,6 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
   Write('What number should be the highest you are asked to multiply?  ');
    Readln(max);
   Writeln; Writeln;
-
-
 
   Write('The Timer Starts in ');
   Write('.'); Delay(200); Write('.'); Delay(200); Write('.'); Delay(200);
