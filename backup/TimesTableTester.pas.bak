@@ -75,8 +75,6 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
 
   until replay = 'n' ;
 
-
-  Writeln('Thankyou for playing. :)');
   Readln;
 
 end.
