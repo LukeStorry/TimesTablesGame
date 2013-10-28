@@ -34,16 +34,16 @@
     </RunParams>
     <Units Count="1">
       <Unit0>
-        <Filename Value="TimesTablesTester.pas"/>
+        <Filename Value="TimesTableTester.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="TimesTablesTester"/>
+        <UnitName Value="TimesTableTester"/>
       </Unit0>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="TimesTablesTester"/>
+      <Filename Value="TimesTableTester"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>

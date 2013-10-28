@@ -1,6 +1,6 @@
 //Written By Luke Storry
 
-program TimesTablesTester;
+program TimesTableTester;
 Uses SysUtils, Crt;
 var
   score , i , correctAnswer , max , myAnswer : Integer;
@@ -61,7 +61,7 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
 
   endTime:=TimeStampToMSecs(DateTimeToTimeStamp(now)); //milliseconds since 2000
 
-  Write('You got ' , score , ' points of out 10,');
+  Write('You got ' , score , ' points of out 10, ');
   Writeln('in '  ,  (endTime-startTime)/1000:4:2 , ' seconds.'); //gives time difference
  Readln;
 
