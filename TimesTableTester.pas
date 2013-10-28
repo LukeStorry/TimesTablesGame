@@ -9,8 +9,32 @@ var
                          startTime , endTime : Comp;   //larger that Int
                                       replay : char;
 
+function CheckInput : Integer;
 
- function GenerateQuestion(max:integer) : String;      //var correctAnswer:integer
+     var
+         input : String;
+             i : Integer;
+         isINT : Boolean;
+
+     begin
+        Repeat
+            Readln(input);
+            for i:=1 to Length(input) do  //check every charachter in string
+                begin
+                  if (Ord(input[i])<48) or (Ord(input[i])>57)
+                     then     //if char isn't a number
+                        begin
+                          Write('That is not an integer, Please try again:  ');
+                          isINT := False;
+                        end
+                     else isInt := True   //if char is a number
+                end;  //of for loop
+        until isINT = True;  //ends loop when input is an Integer
+        Result := StrToInt(input) //output.
+     end;   //of CheckInput function
+
+
+function GenerateQuestion(max:integer) : String;      //var correctAnswer:integer
          var a , b : Integer;
    begin
      Randomize;                    //initialize the random generator
@@ -19,6 +43,7 @@ var
       correctAnswer := a*b;   
      Result := 'What is ' + IntToStr(a) + ' times ' + IntToStr(b) + '?    ';
    end;                            //of generate Q function
+
 
 
 
@@ -42,7 +67,7 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
       Writeln; Writeln;
       score:=0;  //initializes the score variable
       Write('What number should be the highest you are asked to multiply?  ');
-      Readln(max); Writeln; Writeln;
+      max:=CheckInput; Writeln; Writeln;
 
       Write('The Timer Starts in ');
       Write('.'); Delay(200); Write('.'); Delay(200); Write('.'); Delay(200);
@@ -60,7 +85,7 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
         begin
            Writeln('Question ' , i , ':  ');
            Write(GenerateQuestion(max));
-             Readln(myAnswer);
+             myAnswer := CheckInput;
            Writeln(CheckAnswer( myAnswer , correctAnswer ));
            Writeln;
         end;  //of for loop
