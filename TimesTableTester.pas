@@ -4,35 +4,36 @@ program TimesTableTester;
 Uses SysUtils, Crt;
 var
   score , i , correctAnswer , max , myAnswer : Integer;
-                         startTime , endTime : Comp; //larger that Int
+                         startTime , endTime : Comp;   //larger that Int
 
  function GenerateQuestion(max:integer) : String;      //var correctAnswer:integer
          var a , b : Integer;
    begin
-     Randomize; //initialize the random generator
-      a := Random(max-1)+1;     //generates a random number between 1 and max
+     Randomize;                    //initialize the random generator
+      a := Random(max-1)+1;        //generates a random number between 1 and max
       b := Random(max-1)+1;
-      correctAnswer := a*b;    //I DONT LIKE THIS! globals :(
+      correctAnswer := a*b;   
      Result := 'What is ' + IntToStr(a) + ' times ' + IntToStr(b) + '?    ';
-   end; //of generate Q function
+   end;                            //of generate Q function
 
 function CheckAnswer (myAnswer , correctAnswer :integer) : String;
    begin
-     if myAnswer = correctAnswer //checks input against previously stored correct answer
+     if myAnswer = correctAnswer  //checks input against previously stored correct answer
       then begin
-                Score+=1; //again, i dislike using a global variable within a function?
+                Score+=1;
                 Result := 'That is correct! ';
            end
       else Result := 'That is not correct, it is ' + IntToStr(correctAnswer);
-   end; //of checkanswer function
+   end;                           //of checkanswer function
 
- begin    //main program
+
+ begin                           //main program
   Writeln('Times Table Tester.');
   Writeln('Written By Luke Storry.');  Writeln;
   Writeln('This program will ask you 10 multiplication questions.');
   Writeln; Writeln;
 
-  score:=0; //initializes the score variable
+  score:=0;                      //initializes the score variable
 
   Write('What number should be the highest you are asked to multiply?  ');
    Readln(max);
@@ -57,7 +58,7 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
          Readln(myAnswer);
        Writeln(CheckAnswer( myAnswer , correctAnswer ));
        Writeln;
-    end;  //of for loop
+    end;                            //of for loop
 
   endTime:=TimeStampToMSecs(DateTimeToTimeStamp(now)); //milliseconds since 2000
 
