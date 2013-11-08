@@ -1,36 +1,36 @@
 //Written By Luke Storry
 
-program TimesTableTester;
+program TT2withexit;
 
 Uses SysUtils, Crt;
 
 var
-  score , i , correctAnswer , max , myAnswer : Integer;
-                         startTime , endTime : Comp;   //larger that Int
-                                      replay : char;
+  score , i , n , correctAnswer , max , myAnswer : Integer;
+                             startTime , endTime : Comp;   //larger that Int
+                                          replay : char;
 
 function CheckInput : Integer;
-
-     var
-         input : String;
-             i : Integer;
+     var input : String;
+             j : Integer;
          isINT : Boolean;
-
      begin
         Repeat
             Readln(input);
-            for i:=1 to Length(input) do  //check every charachter in string
-                begin
-                  if (Ord(input[i])<48) or (Ord(input[i])>57)
-                     then     //if char isn't a number
-                        begin
+            if input = 'stop' then n:=i;
+            isInt := True;   //if char is a number
+            j:=0;
+            Repeat       //check every character in string
+                j+=1;    //iterate length counter
+                Write(' ' , Ord(input[j]));
+                if (Ord(input[j])<48) or (Ord(input[j])>57) OR not(n=i)
+                   then begin    //if char isn't a number
                           Write('That is not an integer, Please try again:  ');
                           isINT := False;
-                        end
-                     else isInt := True   //if char is a number
-                end;  //of for loop
-        until isINT = True;  //ends loop when input is an Integer
-        Result := StrToInt(input) //output.
+                        end;
+            Until (j > Length(input+1)) OR (isINT = False) OR (n=i);
+        Until (isINT = True) OR (n=i);  //ends loop when input is an Integer
+        If n=i then Result := 0
+               else Result := StrToInt(input) //output.
      end;   //of CheckInput function
 
 
@@ -40,7 +40,7 @@ function GenerateQuestion(max:integer) : String;      //var correctAnswer:intege
      Randomize;                    //initialize the random generator
       a := Random(max-1)+1;        //generates a random number between 1 and max
       b := Random(max-1)+1;
-      correctAnswer := a*b;   
+      correctAnswer := a*b;
      Result := 'What is ' + IntToStr(a) + ' times ' + IntToStr(b) + '?    ';
    end;                            //of generate Q function
 
@@ -61,11 +61,13 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
  begin  //main program
   Writeln('Times Table Tester.');
   Writeln('Written By Luke Storry.');  Writeln;
-  Writeln('This program will ask you 10 multiplication questions.');
+  Writeln('This program will ask you multiplication questions.');
 
   Repeat
       Writeln; Writeln;
       score:=0;  //initializes the score variable
+      Write('How many questions would you like?  ');
+      n:=CheckInput; Writeln; Writeln;
       Write('What number should be the highest you are asked to multiply?  ');
       max:=CheckInput; Writeln; Writeln;
 
@@ -81,7 +83,7 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
 
       startTime:=TimeStampToMSecs(DateTimeToTimeStamp(now)); //milliseconds since 2000
 
-      for i:=1 to 10 do
+      for i:=1 to n do
         begin
            Writeln('Question ' , i , ':  ');
            Write(GenerateQuestion(max));
@@ -92,13 +94,13 @@ function CheckAnswer (myAnswer , correctAnswer :integer) : String;
 
       endTime:=TimeStampToMSecs(DateTimeToTimeStamp(now)); //milliseconds since 2000
 
-      Write('You got ' , score , ' points of out 10, ');
+      Write('You got ' , score , ' points of out of ' , n , ',');
       Writeln('in '  ,  (endTime-startTime)/1000:4:2 , ' seconds.'); //gives time difference
       Delay(2000); Writeln; Writeln;
       Write('Would you like to play again?  (y/n)    ');
       Readln(replay)
 
-  until replay = 'n' ;
+  until (replay = 'n');
 
 
   Writeln('Thankyou for playing. :)');
